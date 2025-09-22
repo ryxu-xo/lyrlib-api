@@ -403,9 +403,9 @@ Contributions are welcome! Please feel free to submit a Pull Request. For major 
 
 If you have any questions or need help, please:
 
-1. Check the [documentation](https://github.com/yourusername/lyrlib-api#readme)
-2. Search [existing issues](https://github.com/yourusername/lyrlib-api/issues)
-3. Create a [new issue](https://github.com/yourusername/lyrlib-api/issues/new)
+1. Check the [documentation](https://github.com/ryxu-xo/lyrlib-api#readme)
+2. Search [existing issues](https://github.com/ryxu-xo/lyrlib-api/issues)
+3. Create a [new issue](https://github.com/ryxu-xo/lyrlib-api/issues/new)
 
 ## 🙏 Acknowledgments
 
