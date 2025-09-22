@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lyrlib-api Demo - Standalone</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            opacity: 0.9;
+            font-size: 1.1em;
+        }
+
+        .content {
+            padding: 30px;
+        }
+
+        .demo-section {
+            margin-bottom: 30px;
+        }
+
+        .demo-section h2 {
+            color: #333;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 5px;
+        }
+
+        .code-block {
+            background: #f8f9fa;
+            border: 1px solid #e1e5e9;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+            overflow-x: auto;
+        }
+
+        .code-block pre {
+            margin: 0;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .highlight {
+            background: #fff3cd;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #ffc107;
+            margin: 15px 0;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .feature-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .feature-list li:before {
+            content: "✅ ";
+            margin-right: 10px;
+        }
+
+        .install-section {
+            background: #e8f5e8;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .install-section h3 {
+            color: #2d5a2d;
+            margin-bottom: 10px;
+        }
+
+        .install-section code {
+            background: #2d5a2d;
+            color: white;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+        }
+
+        .note {
+            background: #d1ecf1;
+            color: #0c5460;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #17a2b8;
+            margin: 15px 0;
+        }
+
+        .note strong {
+            display: block;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎵 lyrlib-api Demo</h1>
+            <p>Advanced TypeScript wrapper for lrclib.net API</p>
+        </div>
+
+        <div class="content">
+            <div class="note">
+                <strong>📝 Note:</strong>
+                This is a standalone demo page. To test the actual API functionality, you need to run the web server example.
+            </div>
+
+            <div class="demo-section">
+                <h2>🚀 Installation</h2>
+                <div class="install-section">
+                    <h3>Install the package:</h3>
+                    <div class="code-block">
+                        <pre>npm install lyrlib-api</pre>
+                    </div>
+                </div>
+            </div>
+
+            <div class="demo-section">
+                <h2>💻 Basic Usage</h2>
+                <div class="code-block">
+                    <pre>import { Client } from 'lyrlib-api';
+
+const client = new Client();
+
+// Search for lyrics
+const query = {
+  track_name: "Bohemian Rhapsody",
+  artist_name: "Queen",
+};
+
+try {
+  // Get track metadata
+  const metadata = await client.findLyrics(query);
+  console.log("Track:", metadata.trackName, "by", metadata.artistName);
+
+  // Get unsynced lyrics (plain text)
+  const unsynced = await client.getUnsynced(query);
+  console.log("Lyrics:", unsynced.content);
+
+  // Get synced lyrics (timestamped)
+  const synced = await client.getSynced(query);
+  console.log("Synced Lyrics:", synced.content);
+} catch (error) {
+  console.error("Error:", error.message);
+}</pre>
+                </div>
+            </div>
+
+            <div class="demo-section">
+                <h2>🎯 Key Features</h2>
+                <ul class="feature-list">
+                    <li>Multiple lyrics formats (plain text, LRC, JSON)</li>
+                    <li>Smart search with relevance scoring</li>
+                    <li>Built-in caching and rate limiting</li>
+                    <li>Full TypeScript support</li>
+                    <li>Discord bot ready</li>
+                    <li>Web application integration</li>
+                    <li>Error handling and retry logic</li>
+                    <li>Format conversion utilities</li>
+                </ul>
+            </div>
+
+            <div class="demo-section">
+                <h2>🔧 Advanced Configuration</h2>
+                <div class="code-block">
+                    <pre>const client = new Client({
+  enableCache: true,
+  cacheTTL: 300000, // 5 minutes
+  enableRateLimit: true,
+  maxRequestsPerMinute: 60,
+  requestTimeout: 10000,
+  userAgent: 'MyApp/1.0.0',
+});</pre>
+                </div>
+            </div>
+
+            <div class="demo-section">
+                <h2>🤖 Discord Bot Example</h2>
+                <div class="code-block">
+                    <pre>// Discord bot integration
+const { Client } = require('lyrlib-api');
+const { EmbedBuilder } = require('discord.js');
+
+const lyricsClient = new Client({
+  enableCache: true,
+  cacheTTL: 600000, // 10 minutes
+});
+
+export async function getLyricsEmbed(track, artist) {
+  try {
+    const query = { track_name: track, artist_name: artist };
+    
+    // Search for the song
+    const results = await lyricsClient.searchSong(query, { limit: 1 });
+    
+    if (results.length === 0) {
+      return new EmbedBuilder()
+        .setColor('#ff0000')
+        .setTitle('❌ Lyrics Not Found')
+        .setDescription(`No lyrics found for "${track}" by ${artist}`);
+    }
+
+    const song = results[0];
+    
+    // Get synced lyrics for better display
+    const lyrics = await lyricsClient.getSynced(query, { 
+      format: 'lrc',
+      includeMetadata: true 
+    });
+
+    return new EmbedBuilder()
+      .setColor('#00ff00')
+      .setTitle(`🎵 ${song.metadata.trackName}`)
+      .setDescription(`by ${song.metadata.artistName}`)
+      .addFields(
+        { name: 'Album', value: song.metadata.albumName, inline: true },
+        { name: 'Duration', value: `${Math.floor(song.metadata.duration / 60)}:${(song.metadata.duration % 60).toString().padStart(2, '0')}`, inline: true },
+        { name: 'Lyrics', value: `\`\`\`\n${lyrics.content.substring(0, 1000)}...\n\`\`\`` }
+      );
+  } catch (error) {
+    return new EmbedBuilder()
+      .setColor('#ff0000')
+      .setTitle('❌ Error')
+      .setDescription(`Failed to fetch lyrics: ${error.message}`);
+  }
+}</pre>
+                </div>
+            </div>
+
+            <div class="demo-section">
+                <h2>🌐 Web Application</h2>
+                <div class="highlight">
+                    <strong>To run the full web application with API endpoints:</strong>
+                    <ol style="margin-top: 10px; padding-left: 20px;">
+                        <li>Navigate to the examples directory: <code>cd examples</code></li>
+                        <li>Install dependencies: <code>npm install</code></li>
+                        <li>Run the server: <code>npm run web-app</code></li>
+                        <li>Open <code>http://localhost:3000</code> in your browser</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="demo-section">
+                <h2>📚 API Methods</h2>
+                <div class="code-block">
+                    <pre>// Search for songs
+const results = await client.searchSong(query, options);
+
+// Get lyrics by track ID
+const lyrics = await client.getLyricsById(trackId, options);
+
+// Get lyrics by metadata
+const lyrics = await client.getLyricsByMetadata(metadata, options);
+
+// Get unsynced lyrics
+const unsynced = await client.getUnsynced(query, options);
+
+// Get synced lyrics
+const synced = await client.getSynced(query, options);
+
+// Get track metadata
+const metadata = await client.findLyrics(query);
+
+// Format lyrics
+const formatted = client.formatLyrics(lyrics, format, metadata);</pre>
+                </div>
+            </div>
+
+            <div class="demo-section">
+                <h2>📖 Documentation</h2>
+                <p>For complete documentation, examples, and API reference, visit the <a href="https://github.com/ryxu-xo/lyrlib-api" target="_blank">GitHub repository</a>.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
