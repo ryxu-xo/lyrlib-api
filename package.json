@@ -1,0 +1,68 @@
+{
+  "name": "lyrlib-api",
+  "version": "1.0.0",
+  "description": "Advanced TypeScript wrapper for lrclib.net API with enhanced features for Discord bots and music applications",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "lint": "eslint src/**/*.ts",
+    "lint:fix": "eslint src/**/*.ts --fix",
+    "type-check": "tsc --noEmit",
+    "prepublishOnly": "npm run build && npm run test"
+  },
+  "keywords": [
+    "lyrics",
+    "music",
+    "api",
+    "discord",
+    "bot",
+    "typescript",
+    "lrclib",
+    "synced-lyrics",
+    "lrc"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ryxu-xo/lyrlib-api.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ryxu-xo/lyrlib-api/issues"
+  },
+  "homepage": "https://github.com/ryxu-xo/lyrlib-api#readme",
+  "dependencies": {
+    "lrclib-api": "^2.0.4"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.0",
+    "@types/node": "^20.0.0",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "eslint": "^8.0.0",
+    "jest": "^29.5.0",
+    "ts-jest": "^29.1.0",
+    "tsup": "^7.0.0",
+    "typescript": "^5.0.0"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}
